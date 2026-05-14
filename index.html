@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Health Station — ระบบคัดกรองสุขภาพประชาชน สำหรับ อสม." />
+  <meta name="theme-color" content="#0F6E56" />
+  <title>Health Station — ระบบคัดกรองสุขภาพ</title>
+
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <style>
+    /* Error Styling */
+    .error-border { border: 2px solid #E24B4A !important; background-color: #FFF5F5 !important; }
+    .error-text { color: #E24B4A; font-size: 12px; margin-top: 4px; display: none; font-weight: bold; }
+    .error-border + .error-text { display: block; }
+    .radio-group.error-border { padding: 10px; border-radius: 8px; border: 2px solid #E24B4A !important; }
+    
+    #form-error-msg { 
+      display: none; 
+      background: #FFF5F5; 
+      color: #E24B4A; 
+      padding: 12px; 
+      border-radius: 8px; 
+      margin-bottom: 15px; 
+      border: 1px solid #E24B4A;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+    }
+    .req { color: #E24B4A; font-weight: bold; margin-left: 2px; }
+    
+    /* Analysis Box */
+    .analysis-box {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+    }
+    .analysis-normal { background: #eef7f4; color: #0F6E56; border: 1px solid #0F6E56; }
+    .analysis-warning { background: #fff9f0; color: #BA7517; border: 1px solid #BA7517; }
+    .analysis-danger { background: #fff5f5; color: #E24B4A; border: 1px solid #E24B4A; }
+
+    /* Success Advice */
+    .success-advice-section { display: none; margin-top: 20px; text-align: left; }
+    .advice-card { background: #fff; border-radius: 12px; padding: 15px; margin-top: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 5px solid #0F6E56; }
+    .btn-knowledge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0F6E56;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+    .btn-knowledge:hover { background: #0a4d3c; transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+
+  <!-- ─── Header ─── -->
+  <header class="app-header">
+    <i class="ti ti-heart-rate-monitor header-icon" aria-hidden="true"></i>
+    <h1>Health Station</h1>
+    <p class="subtitle">ระบบคัดกรองสุขภาพประชาชน สำหรับ อสม.</p>
+    <div style="margin-top: 15px;">
+      <a href="tutorial.html" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.2); color: white; padding: 6px 12px; border-radius: 20px; text-decoration: none; font-size: 13px; border: 1px solid rgba(255,255,255,0.3);">
+        <i class="ti ti-book"></i> คู่มือการปฏิบัติงาน อสม.
+      </a>
+    </div>
+  </header>
+
+  <!-- ─── Progress ─── -->
+  <div class="progress-wrap">
+    <div class="progress-fill" id="prog"></div>
+  </div>
+  <p class="progress-label" id="prog-label"></p>
+
+  <!-- ─── Success Banner ─── -->
+  <div id="successBanner" class="success-banner" role="alert">
+    <i class="ti ti-circle-check success-icon"></i>
+    <h3>บันทึกข้อมูลสำเร็จ</h3>
+    <p id="successName"></p>
+    
+    <!-- Dynamic Advice Section -->
+    <div id="dynamicAdvice" class="success-advice-section"></div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+      <a href="knowledge.html" class="btn-knowledge">
+        <i class="ti ti-book"></i> คำแนะนำความรู้สุขภาพเพิ่มเติม
+      </a>
+      <button class="btn-new" onclick="resetForm()" type="button">
+        <i class="ti ti-plus"></i> เพิ่มรายชื่อใหม่
+      </button>
+    </div>
+  </div>
+
+  <!-- ─── Main Form ─── -->
+  <div id="form-error-msg"><i class="ti ti-alert-circle"></i> กรุณากรอกข้อมูลในช่องที่มีเครื่องหมาย * ให้ครบถ้วน</div>
+  <form id="mainForm" onsubmit="submitForm(event)" novalidate>
+
+    <!-- ── Section 1: ข้อมูล อสม. ── -->
+    <section class="section-card">
+      <h2 class="section-title"><i class="ti ti-map-pin"></i> ข้อมูล อสม.</h2>
+      
+      <div class="field">
+        <label for="f_osm_name">ชื่อ อสม. ผู้คัดกรอง <span class="req">*</span></label>
+        <input type="text" id="f_osm_name" name="f_osm_name" placeholder="ระบุชื่อ-นามสกุล อสม." required />
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label for="f_moo">อสม. หมู่ที่ <span class="req">*</span></label>
+          <select id="f_moo" name="f_moo" required>
+            <option value="">เลือกหมู่...</option>
+            <option value="1">หมู่ 1</option>
+            <option value="2">หมู่ 2</option>
+            <option value="3">หมู่ 3</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f_section">หมวดที่</label>
+          <select id="f_section" name="f_section">
+            <option value="">เลือกหมวด (ถ้ามี)...</option>
+            <option value="1">หมวด 1</option>
+            <option value="2">หมวด 2</option>
+            <option value="3">หมวด 3</option>
+            <option value="4">หมวด 4</option>
+            <option value="5">หมวด 5</option>
+            <option value="6">หมวด 6</option>
+            <option value="7">หมวด 7</option>
+            <option value="8">หมวด 8</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f_place">สถานที่ออกหน่วย <span class="req">*</span></label>
+        <input type="text" id="f_place" name="f_place" placeholder="ระบุสถานที่" required />
+      </div>
+
+      <div class="field">
+        <label for="f_date">วันที่คัดกรอง <span class="req">*</span></label>
+        <input type="date" id="f_date" name="f_date" required />
+      </div>
+    </section>
+
+    <!-- ── Section 2: ข้อมูลส่วนตัว ── -->
+    <section class="section-card">
+      <h2 class="section-title"><i class="ti ti-user"></i> ข้อมูลส่วนตัว</h2>
+      <div class="field">
+        <label for="f_name">ชื่อ-นามสกุล <span class="req">*</span></label>
+        <input type="text" id="f_name" name="f_name" placeholder="ชื่อ นามสกุล" required />
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="f_pid">เลขบัตรประชาชน <span class="req">*</span></label>
+          <input type="text" id="f_pid" name="f_pid" placeholder="13 หลัก" maxlength="13" required inputmode="numeric" />
+        </div>
+        <div class="field">
+          <label for="f_tel">เบอร์โทรศัพท์ <span class="req">*</span></label>
+          <input type="tel" id="f_tel" name="f_tel" placeholder="0xx-xxx-xxxx" required inputmode="numeric" />
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="f_gender">เพศ <span class="req">*</span></label>
+          <select id="f_gender" name="f_gender" required>
+            <option value="">เลือก...</option>
+            <option value="ชาย">ชาย</option>
+            <option value="หญิง">หญิง</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f_age">อายุ (ปี) <span class="req">*</span></label>
+          <input type="number" id="f_age" name="f_age" placeholder="อายุ" required inputmode="numeric" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 3: ข้อมูลร่างกาย & สัญญาณชีพ ── -->
+    <section class="section-card">
+      <h2 class="section-title"><i class="ti ti-ruler-measure"></i> ข้อมูลร่างกาย &amp; สัญญาณชีพ</h2>
+      <div class="row-3">
+        <div class="field">
+          <label for="f_weight">น้ำหนัก (กก.) <span class="req">*</span></label>
+          <input type="number" id="f_weight" name="f_weight" placeholder="กก." step="0.1" required />
+        </div>
+        <div class="field">
+          <label for="f_height">ส่วนสูง (ซม.) <span class="req">*</span></label>
+          <input type="number" id="f_height" name="f_height" placeholder="ซม." step="0.1" required />
+        </div>
+        <div class="field">
+          <label for="f_waist">รอบเอว (ซม.) <span class="req">*</span></label>
+          <input type="number" id="f_waist" name="f_waist" placeholder="ซม." step="0.1" required />
+        </div>
+      </div>
+
+      <div id="bmi-box" class="bmi-result">
+        <i class="ti ti-calculator"></i>
+        <span>BMI: <strong id="bmi-value">-</strong></span>
+        <span id="bmi-label"></span>
+      </div>
+
+      <div class="row-3" style="margin-top: 12px;">
+        <div class="field">
+          <label for="f_bp">ความดันโลหิต <span class="req">*</span></label>
+          <input type="text" id="f_bp" name="f_bp" placeholder="120/80" required />
+          <div id="bp-analysis" class="analysis-box"></div>
+        </div>
+        <div class="field">
+          <label for="f_pulse">ชีพจร (P) <span class="req">*</span></label>
+          <input type="number" id="f_pulse" name="f_pulse" placeholder="ครั้ง/นาที" required />
+          <div id="pulse-analysis" class="analysis-box"></div>
+        </div>
+        <div class="field">
+          <label for="f_dtx">น้ำตาล DTX <span class="req">*</span></label>
+          <input type="number" id="f_dtx" name="f_dtx" placeholder="mg/dL" required />
+          <div id="dtx-analysis" class="analysis-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 4: คัดกรองบุหรี่/แอลกอฮอล์ ── -->
+    <section class="section-card">
+      <h2 class="section-title"><i class="ti ti-smoking"></i> คัดกรองการสูบบุหรี่ <span class="req">*</span></h2>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="smoke" value="ไม่เคยสูบบุหรี่ ( 1B52 )" required /> ไม่เคยสูบบุหรี่</label>
+        <label class="radio-item"><input type="radio" name="smoke" value="เคยสูบแต่เลิกแล้ว ( 1B51 )" /> เคยสูบแต่เลิกแล้ว</label>
+        <label class="radio-item"><input type="radio" name="smoke" value="สูบบุหรี่ ( 1B501, 2, 3, 9 )" /> สูบบุหรี่อยู่</label>
+      </div>
+
+      <h2 class="section-title" style="margin-top:20px;"><i class="ti ti-beer"></i> คัดกรองการดื่มแอลกอฮอล์ <span class="req">*</span></h2>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="alcohol" value="ไม่เคยดื่ม ( 1B600 )" required /> ไม่เคยดื่ม</label>
+        <label class="radio-item"><input type="radio" name="alcohol" value="เลิกดื่มมาแล้ว 1 ปี หรือ 1 ปีขึ้นไป ( 1B601 )" /> เลิกดื่ม ≥ 1 ปี</label>
+        <label class="radio-item"><input type="radio" name="alcohol" value="ดื่มแอลกอฮอล์เป็นบางครั้ง ( 1B602 )" /> ดื่มบางครั้ง</label>
+        <label class="radio-item"><input type="radio" name="alcohol" value="ดื่มแอลกอฮอล์บ่อย ( 1B603 )" /> ดื่มบ่อย</label>
+        <label class="radio-item"><input type="radio" name="alcohol" value="ดื่มแอลกอฮอล์ทุกวัน ( 1B604 )" /> ดื่มทุกวัน</label>
+      </div>
+    </section>
+
+    <!-- ── Section 5: ภาวะซึมเศร้า 2Q ── -->
+    <section class="section-card">
+      <h2 class="section-title"><i class="ti ti-brain"></i> ภาวะซึมเศร้า 2Q <span class="req">*</span></h2>
+      <p class="dep-question">1. รู้สึกไม่สบายใจ เซ็ง ทุกข์ใจ เศร้า ท้อแท้ ซึม หงอย</p>
+      <div class="radio-group" style="margin-bottom:15px;">
+        <label class="radio-item"><input type="radio" name="dep1" value="ไม่มี" required /> ไม่มี</label>
+        <label class="radio-item"><input type="radio" name="dep1" value="มี" /> มี</label>
+      </div>
+      <p class="dep-question">2. รู้สึกเบื่อ ไม่อยากพูด ไม่อยากทำอะไร หรือทำอะไรก็ไม่สนุก</p>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="dep2" value="ไม่มี" required /> ไม่มี</label>
+        <label class="radio-item"><input type="radio" name="dep2" value="มี" /> มี</label>
+      </div>
+    </section>
+
+    <!-- ── Section 6: บันทึกเพิ่มเติม ── -->
+    <section class="section-card">
+      <h2 class="section-title"><i class="ti ti-notes"></i> บันทึกเพิ่มเติม</h2>
+      <div class="field">
+        <label for="f_advice">คำแนะนำที่ อสม. ให้แก่ประชาชน</label>
+        <textarea id="f_advice" name="f_advice" placeholder="ระบุคำแนะนำ..."></textarea>
+      </div>
+      <div class="field">
+        <label for="f_note">หมายเหตุ</label>
+        <textarea id="f_note" name="f_note" placeholder="หมายเหตุเพิ่มเติม..."></textarea>
+      </div>
+    </section>
+
+    <button type="submit" class="btn-submit" id="submitBtn">
+      <i class="ti ti-send"></i> <span id="submitText">บันทึกข้อมูล</span>
+    </button>
+  </form>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

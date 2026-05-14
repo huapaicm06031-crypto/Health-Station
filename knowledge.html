@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>คลังความรู้สุขภาพ — Health Station</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .knowledge-container { padding: 20px; max-width: 800px; margin: 0 auto; }
+    .card { background: #fff; border-radius: 15px; overflow: hidden; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    
+    /* Image Container & Base Styling */
+    .img-wrapper { width: 100%; display: flex; justify-content: center; background: #f0f0f0; }
+    .card-img { 
+      max-width: 100%; 
+      height: auto; 
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Utility Classes for Image Sizes */
+    .img-full { width: 100%; aspect-ratio: 20 / 16; }
+    .img-lg { width: 80%; margin: 10px auto; border-radius: 8px; }
+    .img-md { width: 100%; margin: 0px auto; border-radius: 8px; }
+    .img-sm { width: 40%; margin: 10px auto; border-radius: 8px; }
+    .img-full { aspect-ratio: 20 / 16; }
+
+    .card-content { padding: 20px; }
+    .card-title { font-size: 20px; font-weight: bold; color: #0F6E56; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .card-text { font-size: 15px; color: #555; line-height: 1.6; }
+    .back-btn { display: inline-flex; align-items: center; gap: 5px; color: #0F6E56; text-decoration: none; font-weight: bold; margin-bottom: 20px; }
+    .tip-box { background: #eef7f4; border-left: 4px solid #0F6E56; padding: 10px; margin-top: 15px; font-size: 14px; border-radius: 0 8px 8px 0; }
+  </style>
+</head>
+<body>
+
+<div class="knowledge-container">
+  <a href="index.html" class="back-btn"><i class="ti ti-arrow-left"></i> กลับหน้าหลัก</a>
+  
+  <header style="margin-bottom: 30px; text-align: center;">
+    <h1 style="color: #0F6E56;">คลังความรู้สุขภาพ</h1>
+    <p style="color: #666;">คู่มือการดูแลตัวเองเบื้องต้นสำหรับประชาชน</p>
+  </header>
+
+  <!-- ความดันโลหิต (ตัวอย่างภาพขนาดเต็ม) -->
+  <div class="card">
+    <div class="img-wrapper">
+      <img src="https://i.postimg.cc/HsDG0LqD/unnamed-(7).png" alt="ความดันโลหิต" class="card-img img-full">
+    </div>
+    <div class="card-content">
+      <div class="card-title"><i class="ti ti-activity"></i> โรคความดันโลหิตสูง</div>
+      <p class="card-text">
+        ความดันโลหิตสูงคือภาวะที่แรงดันในหลอดเลือดสูงกว่าปกติ หากปล่อยไว้นานอาจส่งผลเสียต่อหัวใจและสมองได้
+      </p>
+      <div class="tip-box">
+        <strong>💡 วิธีดูแลตัวเอง:</strong>
+        <ul style="margin-top:5px; padding-left:20px;">
+          <li>ลดอาหารรสเค็ม เลี่ยงผงชูรสและอาหารแปรรูป</li>
+          <li>ออกกำลังกายแบบแอโรบิก เช่น เดินเร็ว อย่างน้อย 150 นาที/สัปดาห์</li>
+          <li>ควบคุมน้ำหนักตัวให้อยู่ในเกณฑ์ปกติ (BMI 18.5 - 22.9)</li>
+          <li>งดสูบบุหรี่และเครื่องดื่มแอลกอฮอล์</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- เบาหวาน (ตัวอย่างภาพขนาดกลาง) -->
+  <div class="card">
+    <div class="img-wrapper">
+      <img src="https://i.postimg.cc/YCrrP73q/unnamed-(8)-lower.png" alt="เบาหวาน" class="card-img img-md img-square">
+    </div>
+    <div class="card-content">
+      <div class="card-title"><i class="ti ti-droplet"></i> โรคเบาหวาน</div>
+      <p class="card-text">
+        เบาหวานคือภาวะที่ร่างกายมีระดับน้ำตาลในเลือดสูงกว่าปกติ เนื่องจากขาดฮอร์โมนอินซูลินหรือดื้อต่ออินซูลิน
+      </p>
+      <div class="tip-box">
+        <strong>💡 วิธีดูแลตัวเอง:</strong>
+        <ul style="margin-top:5px; padding-left:20px;">
+          <li>เลือกทานข้าวไม่ขัดสี ธัญพืช และผักใบเขียว</li>
+          <li>เลี่ยงน้ำหวาน ขนมหวาน และผลไม้ที่มีรสหวานจัด</li>
+          <li>ทานอาหารให้ตรงเวลาและครบทุกมื้อในปริมาณที่พอเหมาะ</li>
+          <li>ตรวจเช็คสุขภาพเท้าสม่ำเสมอเพื่อป้องกันแผลเรื้อรัง</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer style="text-align: center; margin-top: 40px; color: #999; font-size: 12px;">
+    <p>© 2026 Health Station — สนับสนุนโดย อสม. เพื่อชุมชน</p>
+  </footer>
+</div>
+
+</body>
+</html>

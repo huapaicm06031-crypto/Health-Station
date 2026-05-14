@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>คู่มือการปฏิบัติงาน อสม. — Health Station</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .tutorial-container { padding: 20px; max-width: 600px; margin: 0 auto; }
+    .step-card { background: #fff; border-radius: 15px; overflow: hidden; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .step-header { background: #0F6E56; color: white; padding: 15px 20px; font-size: 18px; font-weight: bold; display: flex; align-items: center; gap: 10px; }
+    .step-content { padding: 20px; }
+
+     /* Video & Image Styling */
+    .media-container { width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 15px; background: #000; }
+    .step-img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+    
+    /* Responsive Video Wrapper (for YouTube/Iframe) */
+    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    
+    /* HTML5 Video Styling */
+    video { width: 100%; display: block; border-radius: 10px; }
+
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+    .info-item { background: #f8f9fa; padding: 10px; border-radius: 8px; border-left: 4px solid #0F6E56; }
+    .info-label { font-size: 12px; color: #666; display: block; }
+    .info-value { font-size: 14px; font-weight: bold; color: #333; }
+    .back-btn { display: inline-flex; align-items: center; gap: 5px; color: #0F6E56; text-decoration: none; font-weight: bold; margin-bottom: 20px; }
+    .warning-box { background: #fff9f0; border-left: 4px solid #BA7517; padding: 15px; margin-top: 15px; border-radius: 0 8px 8px 0; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+<div class="tutorial-container">
+  <a href="index.html" class="back-btn"><i class="ti ti-arrow-left"></i> กลับหน้าหลัก</a>
+  
+  <header style="margin-bottom: 30px; text-align: center;">
+    <h1 style="color: #0F6E56;">คู่มือการปฏิบัติงาน อสม.</h1>
+    <p style="color: #666;">ขั้นตอนการตรวจคัดกรองที่ถูกต้องและมาตรฐาน</p>
+    </a>
+  </header>
+
+  <!-- การวัดความดัน -->
+  <div class="step-card">
+    <div class="step-header"><i class="ti ti-armchair"></i> 1. การวัดความดันโลหิตที่ถูกต้อง</div>
+    <div class="step-content">
+      <div class="media-container">
+        <!-- ตัวอย่าง: ใส่ YouTube Video (เปลี่ยน ID หลัง /embed/ ได้เลย) -->
+        <div class="video-wrapper">
+          <iframe width="975" height="548" src="https://www.youtube.com/embed/SohSOL6Vlhc" title="Patient Information : การใช้เครื่องวัดความดันโลหิต ตรวจวัดด้วยตัวเองที่บ้าน" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+      <p><strong>ท่าทางที่ถูกต้อง:</strong> นั่งหลังพิงพนัก เท้าทั้งสองวางราบกับพื้น ไม่ไขว่ห้าง วางแขนบนโต๊ะให้ระดับผ้าพันแขนอยู่ระดับเดียวกับหัวใจ</p>
+      
+      <div class="warning-box">
+        <strong>⚠️ ข้อควรระวัง:</strong> ก่อนวัดควรให้ประชาชนนั่งพักอย่างน้อย 5-10 นาที ไม่ดื่มกาแฟ หรือสูบบุหรี่ก่อนวัด 30 นาที
+      </div>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">ตัวเลขบน (SYS)</span>
+          <span class="info-value">แรงดันขณะหัวใจบีบตัว</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">ตัวเลขล่าง (DIA)</span>
+          <span class="info-value">แรงดันขณะหัวใจคลายตัว</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- การเจาะน้ำตาล -->
+  <div class="step-card">
+    <div class="step-header"><i class="ti ti-droplet"></i> 2. การเจาะน้ำตาลปลายนิ้ว (DTX)</div>
+    <div class="step-content">
+      <div class="media-container">
+        <!-- ตัวอย่าง: ใส่ YouTube Video (เปลี่ยน ID หลัง /embed/ ได้เลย) -->
+        <div class="video-wrapper">
+          <iframe width="975" height="548" src="https://www.youtube.com/embed/JLWdU921dwc" title="วิธีเจาะเลือดตรวจน้ำตาลปลายนิ้วด้วยตัวเอง Blood Glucose strip โรงพยาบาลแม่ทา" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+      <p><strong>ขั้นตอนการเจาะ:</strong> เช็ดปลายนิ้วด้วยแอลกอฮอล์ รอให้แห้งสนิท ใช้เข็มเจาะบริเวณด้านข้างของปลายนิ้ว (เจ็บน้อยกว่า) เช็ดเลือดหยดแรกออก แล้วใช้หยดที่สองในการตรวจ</p>
+      
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">ค่าปกติ (งดอาหาร)</span>
+          <span class="info-value">70 - 100 mg/dL</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">ค่าเสี่ยงเบาหวาน</span>
+          <span class="info-value">100 - 125 mg/dL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- การอ่านค่าชีพจร -->
+  <div class="step-card">
+    <div class="step-header"><i class="ti ti-heart-rate-monitor"></i> 3. การอ่านค่าชีพจร (Pulse)</div>
+    <div class="step-content">
+      <p>ชีพจรบอกถึงอัตราการเต้นของหัวใจต่อนาที ในขณะพักค่าปกติควรอยู่ที่ <strong>60 - 100 ครั้งต่อนาที</strong></p>
+      <ul style="margin-top: 10px; padding-left: 20px; font-size: 14px; color: #555;">
+        <li><strong>ถ้าน้อยกว่า 60:</strong> ชีพจรช้า (อาจเป็นนักกีฬา หรือมีโรคหัวใจ)</li>
+        <li><strong>ถ้ามากกว่า 100:</strong> ชีพจรเร็ว (อาจเกิดจากความเครียด ไข้ หรือออกกำลังกาย)</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer style="text-align: center; margin-top: 40px; color: #999; font-size: 12px;">
+    <p>© 2026 Health Station — คู่มือสนับสนุนการทำงานของ อสม.</p>
+  </footer>
+</div>
+
+</body>
+</html>
