@@ -66,6 +66,12 @@
       transition: 0.3s;
     }
     .btn-knowledge:hover { background: #0a4d3c; transform: translateY(-2px); }
+
+    /* BP Split Styling */
+    .bp-input-group { display: flex; align-items: center; gap: 5px; }
+    .bp-input-group input { text-align: center; }
+    .bp-separator { font-size: 20px; font-weight: bold; color: #666; }
+    .field-sublabel { font-size: 11px; color: #666; margin-top: 2px; display: block; }
   </style>
 </head>
 <body>
@@ -101,7 +107,7 @@
 
     <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
       <a href="knowledge.html" class="btn-knowledge">
-        <i class="ti ti-book"></i> คำแนะนำความรู้สุขภาพเพิ่มเติม
+        <i class="ti ti-book"></i> อ่านความรู้สุขภาพเพิ่มเติม
       </a>
       <button class="btn-new" onclick="resetForm()" type="button">
         <i class="ti ti-plus"></i> เพิ่มรายชื่อใหม่
@@ -218,18 +224,28 @@
 
       <div class="row-3" style="margin-top: 12px;">
         <div class="field">
-          <label for="f_bp">ความดันโลหิต <span class="req">*</span></label>
-          <input type="text" id="f_bp" name="f_bp" placeholder="120/80" required />
+          <label>ความดันโลหิต <span class="req">*</span></label>
+          <div class="bp-input-group">
+            <div style="flex:1">
+              <input type="number" id="f_bp_sys" name="f_bp_sys" placeholder="ค่าบน" required inputmode="numeric" />
+              <span class="field-sublabel">ตัวบน (SYS)</span>
+            </div>
+            <span class="bp-separator">/</span>
+            <div style="flex:1">
+              <input type="number" id="f_bp_dia" name="f_bp_dia" placeholder="ค่าล่าง" required inputmode="numeric" />
+              <span class="field-sublabel">ตัวล่าง (DIA)</span>
+            </div>
+          </div>
           <div id="bp-analysis" class="analysis-box"></div>
         </div>
         <div class="field">
           <label for="f_pulse">ชีพจร (P) <span class="req">*</span></label>
-          <input type="number" id="f_pulse" name="f_pulse" placeholder="ครั้ง/นาที" required />
+          <input type="number" id="f_pulse" name="f_pulse" placeholder="ครั้ง/นาที" required inputmode="numeric" />
           <div id="pulse-analysis" class="analysis-box"></div>
         </div>
         <div class="field">
           <label for="f_dtx">น้ำตาล DTX <span class="req">*</span></label>
-          <input type="number" id="f_dtx" name="f_dtx" placeholder="mg/dL" required />
+          <input type="number" id="f_dtx" name="f_dtx" placeholder="mg/dL" required inputmode="numeric" />
           <div id="dtx-analysis" class="analysis-box"></div>
         </div>
       </div>
@@ -267,6 +283,7 @@
         <label class="radio-item"><input type="radio" name="dep2" value="ไม่มี" required /> ไม่มี</label>
         <label class="radio-item"><input type="radio" name="dep2" value="มี" /> มี</label>
       </div>
+      <div id="dep-analysis" class="analysis-box"></div>
     </section>
 
     <!-- ── Section 6: บันทึกเพิ่มเติม ── -->
