@@ -72,6 +72,32 @@
     .bp-input-group input { text-align: center; }
     .bp-separator { font-size: 20px; font-weight: bold; color: #666; }
     .field-sublabel { font-size: 11px; color: #666; margin-top: 2px; display: block; }
+
+    /* Header Buttons Styling */
+    .header-btns {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 13px;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: 0.3s;
+    }
+    .btn-header:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body>
@@ -83,9 +109,12 @@
     <i class="ti ti-heart-rate-monitor header-icon" aria-hidden="true"></i>
     <h1>Health Station</h1>
     <p class="subtitle">ระบบคัดกรองสุขภาพประชาชน สำหรับ อสม.</p>
-    <div style="margin-top: 15px;">
-      <a href="tutorial.html" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.2); color: white; padding: 6px 12px; border-radius: 20px; text-decoration: none; font-size: 13px; border: 1px solid rgba(255,255,255,0.3);">
+    <div class="header-btns">
+      <a href="tutorial.html" class="btn-header">
         <i class="ti ti-book"></i> คู่มือการปฏิบัติงาน อสม.
+      </a>
+      <a href="https://media.nhso.go.th/ebook/flipbook/260/1/1#%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B2%E0%B8%8A%E0%B8%99%E0%B8%AA%E0%B8%B4%E0%B8%97%E0%B8%98%E0%B8%B4%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%81%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B8%AA%E0%B8%B8%E0%B8%82%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B9%81%E0%B8%AB%E0%B9%88%E0%B8%87%E0%B8%8A%E0%B8%B2%E0%B8%95%E0%B8%B4%20%E0%B8%9B%E0%B8%B5%202568/1" target="_blank" class="btn-header">
+        <i class="ti ti-device-floppy"></i> Ebook สิทธิบัตรทอง 2568
       </a>
     </div>
   </header>
